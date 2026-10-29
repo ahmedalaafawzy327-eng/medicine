@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Design System Variables — "رابعة طب"
+   Palette: Refined Deep Navy & Rich Gold
+   ========================================================================== */
+
+:root {
+  /* Brand Navy Spectrum */
+  --navy-deep: #101D35;
+  --navy-secondary: #172947;
+  --navy-surface: #1E3357;
+  --navy-hover: #264270;
+  --navy-light: #2D4E84;
+  --navy-subtle: rgba(16, 29, 53, 0.05);
+
+  /* Brand Rich Gold Spectrum */
+  --gold-rich: #D4A62F;
+  --gold-dark: #B88A20;
+  --gold-light: #F2D98A;
+  --gold-pale: #FBF4DE;
+  --gold-glow: rgba(212, 166, 47, 0.25);
+  --gold-subtle: rgba(212, 166, 47, 0.12);
+
+  /* Surfaces & Backgrounds */
+  --bg-main: #F5F6F8;
+  --bg-card: #FFFFFF;
+  --bg-card-alt: #FAFBFC;
+  --bg-card-hover: #F8FAFD;
+  --bg-modal-backdrop: rgba(16, 29, 53, 0.65);
+
+  /* Typography Colors */
+  --text-primary: #172033;
+  --text-secondary: #788396;
+  --text-muted: #9BA6B8;
+  --text-inverse: #FFFFFF;
+  --text-inverse-muted: #B4C2D6;
+
+  /* Borders & Dividers */
+  --border-light: #E7EBF2;
+  --border-card: #E3E7EE;
+  --border-focus: #D4A62F;
+
+  /* Functional Status Colors */
+  --success: #27966B;
+  --success-light: #E8F7F0;
+  --danger: #D94A4A;
+  --danger-light: #FDF1F1;
+  --warning: #E67E22;
+  --warning-light: #FEF5EB;
+  --info: #2B78C5;
+  --info-light: #EDF5FD;
+
+  /* Priority Colors */
+  --priority-urgent: #D94A4A;
+  --priority-high: #E67E22;
+  --priority-medium: #D4A62F;
+  --priority-low: #27966B;
+
+  /* Layout Dimensions */
+  --sidebar-width: 270px;
+  --topbar-height: 70px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 14px;
+  --border-radius-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(16, 29, 53, 0.06);
+  --shadow-md: 0 4px 14px rgba(16, 29, 53, 0.08);
+  --shadow-lg: 0 10px 30px rgba(16, 29, 53, 0.12);
+  --shadow-gold: 0 4px 18px rgba(212, 166, 47, 0.28);
+  --shadow-modal: 0 20px 50px rgba(16, 29, 53, 0.3);
+
+  /* Typography */
+  --font-main: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-arabic: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.2, 0, 0, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Optional Alternate Theme: Deep Navy Darker */
+[data-theme="navy-gold-dark"] {
+  --bg-main: #0B1322;
+  --bg-card: #13213B;
+  --bg-card-alt: #172847;
+  --bg-card-hover: #1C3155;
+  --border-light: #1F365D;
+  --border-card: #243D69;
+  --text-primary: #EEF3FA;
+  --text-secondary: #9EB0CB;
+  --text-muted: #6E82A0;
+}

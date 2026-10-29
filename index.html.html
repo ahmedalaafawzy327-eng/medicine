@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="navy-gold-classic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="رابعة طب — Complete Medical Study Management Suite for Fourth-Year Medical Students">
+  <title>رابعة طب | Medical Study Suite</title>
+
+  <!-- Google Fonts: Cairo (for Arabic Title) & Inter (for English UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- App Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+
+  <div class="app-shell">
+
+    <!-- ======================================================================
+         RIGHT SIDEBAR (Dark Navy & Gold)
+         Docked to the right of the screen
+         ====================================================================== -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close Navigation">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-logo-box">
+          <!-- Distinctive Luxury Geometric Numeral 4 Mark -->
+          <svg viewBox="0 0 100 100" width="46" height="46">
+            <defs>
+              <linearGradient id="sbGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#F5DF95" />
+                <stop offset="50%" stop-color="#D4A62F" />
+                <stop offset="100%" stop-color="#9E7310" />
+              </linearGradient>
+              <linearGradient id="sbNavyFacet" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1E3253" />
+                <stop offset="100%" stop-color="#0F1A2D" />
+              </linearGradient>
+            </defs>
+            <polygon points="50,4 92,26 92,74 50,96 8,74 8,26" fill="url(#sbNavyFacet)" stroke="url(#sbGoldGrad)" stroke-width="2"/>
+            <polygon points="54,20 44,20 23,62 38,62" fill="#FFF2B8"/>
+            <polygon points="21,60 76,60 76,69 21,69" fill="url(#sbGoldGrad)"/>
+            <polygon points="57,32 68,32 68,80 57,80" fill="url(#sbGoldGrad)"/>
+            <polygon points="57,60 68,60 68,69 57,69" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <div class="sidebar-brand-text">
+          <span class="brand-title-ar" lang="ar" dir="rtl">رابعة طب</span>
+          <span class="brand-subtitle-en">Medical Study Suite</span>
+        </div>
+      </div>
+
+      <!-- Quick Exam Ribbon -->
+      <div class="sidebar-exam-ribbon">
+        <span class="ribbon-label">Exam Countdown</span>
+        <div class="ribbon-days-box">
+          <span class="ribbon-days-number" id="sidebar-ribbon-days">--</span>
+          <span class="ribbon-days-unit">Days</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <span class="nav-section-label">Academic Center</span>
+        
+        <a href="#dashboard" class="nav-item active" data-view="dashboard">
+          <span class="nav-icon"><i class="fas fa-th-large"></i></span>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="#subjects" class="nav-item" data-view="subjects">
+          <span class="nav-icon"><i class="fas fa-book-medical"></i></span>
+          <span>Study Subjects</span>
+        </a>
+
+        <a href="#calendar" class="nav-item" data-view="calendar">
+          <span class="nav-icon"><i class="far fa-calendar-alt"></i></span>
+          <span>Calendar</span>
+        </a>
+
+        <a href="#today" class="nav-item" data-view="today">
+          <span class="nav-icon"><i class="fas fa-check-double"></i></span>
+          <span>Today's Tasks</span>
+        </a>
+
+        <a href="#analytics" class="nav-item" data-view="analytics">
+          <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+          <span>Topic Progression</span>
+        </a>
+
+        <span class="nav-section-label" style="margin-top: 14px;">System</span>
+
+        <a href="#settings" class="nav-item" data-view="settings">
+          <span class="nav-icon"><i class="fas fa-sliders-h"></i></span>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <span>MBBCh Year 4</span>
+        <span class="badge badge-gold" style="font-size: 0.68rem;">v1.0 Ready</span>
+      </div>
+    </aside>
+
+    <!-- Backdrop for mobile drawer -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+
+    <!-- ======================================================================
+         MAIN CONTENT WRAPPER (Left of the right sidebar on desktop)
+         ====================================================================== -->
+    <div class="app-content-wrapper">
+
+      <!-- Compact Top Navigation Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="topbar-page-info">
+            <h1 class="topbar-page-title" id="topbar-page-title">Academic Dashboard</h1>
+            <span class="topbar-breadcrumb" id="topbar-breadcrumb">Overview & Exam Readiness</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Mobile Brand Pill -->
+          <div class="mobile-brand-pill">
+            <span class="brand-title-ar" lang="ar" dir="rtl" style="font-size: 1.25rem;">رابعة طب</span>
+          </div>
+
+          <button class="btn btn-sm btn-gold" id="quick-action-add-task">
+            <i class="fas fa-plus"></i> <span class="hide-mobile">Add Task</span>
+          </button>
+
+          <!-- Hamburger Button for Mobile / Tablet -->
+          <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open Navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Scrollable Content Container -->
+      <main class="app-main">
+
+        <!-- ==================================================================
+             VIEW 1: MAIN DASHBOARD
+             ================================================================== -->
+        <section class="view-section active" id="view-dashboard">
+
+          <!-- A. Exam Countdown Hero Card -->
+          <div class="countdown-hero">
+            <div class="countdown-hero-top">
+              <div class="countdown-hero-info">
+                <span class="countdown-pill" id="countdown-status-pill">
+                  <i class="fas fa-hourglass-start"></i> Academic Countdown
+                </span>
+                <h2 class="countdown-title">Final MBBCh Medical Examination</h2>
+                <div class="countdown-target-date">
+                  <i class="far fa-calendar-check" style="color: var(--gold-light);"></i>
+                  <span id="countdown-target-display">February 19, 2027 at 09:00 AM</span>
+                </div>
+              </div>
+
+              <div class="countdown-hero-actions">
+                <button class="btn btn-sm btn-outline-gold" id="btn-edit-exam-date">
+                  <i class="far fa-clock"></i> Edit Exam Date
+                </button>
+              </div>
+            </div>
+
+            <!-- 4 Live Countdown Segments -->
+            <div class="countdown-timer-grid">
+              <div class="timer-box">
+                <div class="timer-num" id="countdown-days">--</div>
+                <div class="timer-label">Days Remaining</div>
+              </div>
+              <div class="timer-box">
+                <div class="timer-num" id="countdown-hours">--</div>
+                <div class="timer-label">Hours</div>
+              </div>
+              <div class="timer-box">
+                <div class="timer-num" id="countdown-mins">--</div>
+                <div class="timer-label">Minutes</div>
+              </div>
+              <div class="timer-box">
+                <div class="timer-num" id="countdown-secs" style="color: var(--gold-light);">--</div>
+                <div class="timer-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- D. Functional Quick Actions Strip -->
+          <div class="quick-actions-bar">
+            <button class="quick-action-btn" id="quick-action-add-subject">
+              <i class="fas fa-folder-plus" style="color: var(--gold-dark);"></i> Add Subject
+            </button>
+            <button class="quick-action-btn" id="quick-action-add-lecture">
+              <i class="fas fa-file-medical" style="color: var(--gold-dark);"></i> Add Lecture
+            </button>
+            <button class="quick-action-btn" id="quick-action-open-calendar">
+              <i class="far fa-calendar-alt" style="color: var(--navy-deep);"></i> Open Calendar
+            </button>
+            <button class="quick-action-btn" id="quick-action-view-analytics">
+              <i class="fas fa-chart-pie" style="color: var(--navy-deep);"></i> View Analytics
+            </button>
+            <button class="quick-action-btn" id="quick-action-edit-exam">
+              <i class="fas fa-user-clock" style="color: var(--gold-dark);"></i> Edit Exam Date
+            </button>
+          </div>
+
+          <!-- B. 8 Overview Cards Grid -->
+          <div class="overview-grid">
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Total Subjects</span>
+                <div class="stat-card-icon"><i class="fas fa-book-medical"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-total-subjects">5</div>
+              <div class="stat-card-sub">Active Year 4 Courses</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Total Lectures</span>
+                <div class="stat-card-icon"><i class="fas fa-layer-group"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-total-lectures">89</div>
+              <div class="stat-card-sub">Curriculum Topics</div>
+            </div>
+
+            <div class="stat-card green-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Completed Lectures</span>
+                <div class="stat-card-icon"><i class="fas fa-check-circle"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-completed-lectures" style="color: var(--success);">0</div>
+              <div class="stat-card-sub">Topics Mastered</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Pending Lectures</span>
+                <div class="stat-card-icon"><i class="fas fa-hourglass-half"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-pending-lectures" style="color: var(--warning);">89</div>
+              <div class="stat-card-sub">Topics Remaining</div>
+            </div>
+
+            <div class="stat-card gold-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Lecture Completion</span>
+                <div class="stat-card-icon"><i class="fas fa-percent"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-overall-completion" style="color: var(--gold-dark);">0%</div>
+              <div class="stat-card-sub" id="dashboard-overall-progress-label">0 of 89 completed</div>
+            </div>
+
+            <div class="stat-card green-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Tasks Done Today</span>
+                <div class="stat-card-icon"><i class="fas fa-tasks"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-tasks-completed-today">0</div>
+              <div class="stat-card-sub">Daily Goals Achieved</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Tasks Left Today</span>
+                <div class="stat-card-icon"><i class="far fa-clock"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-tasks-remaining-today">2</div>
+              <div class="stat-card-sub">Pending Study Sessions</div>
+            </div>
+
+            <div class="stat-card gold-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Days to Exam</span>
+                <div class="stat-card-icon"><i class="fas fa-calendar-day"></i></div>
+              </div>
+              <div class="stat-card-value" id="stat-study-days-remain">--</div>
+              <div class="stat-card-sub">Until Feb 19, 2027</div>
+            </div>
+          </div>
+
+          <!-- Overall Curriculum Progress Bar -->
+          <div class="card" style="padding: 20px 24px; margin-bottom: 28px;">
+            <div class="progress-container">
+              <div class="progress-header">
+                <span style="font-weight: 700; color: var(--navy-deep);">Overall 4th Year Curriculum Completion</span>
+                <span class="progress-value" id="stat-overall-completion-bar-label">Tracked Live</span>
+              </div>
+              <div class="progress-track progress-lg">
+                <div class="progress-fill" id="dashboard-overall-progress-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- C. Today's Focus & Subject Progress Breakdown -->
+          <div class="dashboard-split-grid">
+            
+            <!-- Left: Today's Focus Card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-bullseye card-title-icon"></i> Today's Study Focus
+                </h3>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn btn-sm btn-outline" id="today-focus-open-calendar">
+                    <i class="far fa-calendar-alt"></i> Calendar
+                  </button>
+                  <button class="btn btn-sm btn-gold" id="today-focus-add-task">
+                    <i class="fas fa-plus"></i> Add Task
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- Today's Completion Bar -->
+                <div style="margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border-light);">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">
+                    <span style="color: var(--text-secondary);">Today's Progress</span>
+                    <span id="dashboard-today-progress-text" style="color: var(--navy-deep);">0% (0 tasks)</span>
+                  </div>
+                  <div class="progress-track">
+                    <div class="progress-fill" id="dashboard-today-progress-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Dynamic Today Task List -->
+                <div class="today-focus-list" id="dashboard-today-focus-list">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Subject Progress Snapshot -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-book-reader card-title-icon"></i> Curriculum Progress
+                </h3>
+                <button class="btn btn-sm btn-outline" onclick="window.UI.switchView('subjects')">
+                  View All Subjects
+                </button>
+              </div>
+              <div class="card-body" id="dashboard-subjects-summary-list">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 2: STUDY SUBJECTS MANAGEMENT
+             ================================================================== -->
+        <section class="view-section" id="view-subjects">
+          
+          <!-- View 2A: Subjects List View -->
+          <div id="subjects-list-view">
+            <div class="subjects-toolbar">
+              <div class="search-filter-box">
+                <div class="search-input-wrap">
+                  <i class="fas fa-search search-icon"></i>
+                  <input type="text" id="subjects-search-input" class="form-control" placeholder="Search subjects, categories, or lectures...">
+                </div>
+
+                <select id="subjects-filter-status" class="form-control" style="max-width: 160px;">
+                  <option value="all">All Statuses</option>
+                  <option value="completed">Completed</option>
+                  <option value="pending">Incomplete</option>
+                  <option value="needs_revision">Needs Revision</option>
+                </select>
+
+                <select id="subjects-sort-by" class="form-control" style="max-width: 170px;">
+                  <option value="default">Default Sort</option>
+                  <option value="name">Sort by Name</option>
+                  <option value="priority">Sort by Priority</option>
+                  <option value="completion">Sort by Completion</option>
+                  <option value="rating">Sort by Rating</option>
+                </select>
+              </div>
+
+              <button class="btn btn-gold" id="btn-add-subject">
+                <i class="fas fa-plus"></i> Add New Subject
+              </button>
+            </div>
+
+            <!-- Subjects Cards Grid -->
+            <div class="subjects-cards-grid" id="subjects-cards-grid">
+              <!-- Populated by JS with 5 Initial Subjects -->
+            </div>
+          </div>
+
+          <!-- View 2B: Subject Detail View (Categories & Lectures) -->
+          <div id="subject-detail-view" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; flex-wrap: wrap; gap: 14px;">
+              <button class="btn btn-outline" id="btn-back-to-subjects">
+                <i class="fas fa-arrow-left"></i> Back to Subjects
+              </button>
+
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-gold" id="btn-add-category">
+                  <i class="fas fa-folder-plus"></i> Add Category
+                </button>
+              </div>
+            </div>
+
+            <!-- Subject Detail Header Card -->
+            <div class="card" style="padding: 26px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                <div>
+                  <span class="badge badge-navy" id="detail-subject-code" style="margin-bottom: 8px;">PED-401</span>
+                  <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--navy-deep);" id="detail-subject-title">Pediatrics</h2>
+                </div>
+                <span class="badge badge-priority-high" id="detail-subject-priority">High Priority</span>
+              </div>
+
+              <div class="progress-container">
+                <div class="progress-header">
+                  <span id="detail-subject-ratio">0 of 45 Lectures Completed</span>
+                  <span class="progress-value" id="detail-subject-pct">0%</span>
+                </div>
+                <div class="progress-track progress-lg">
+                  <div class="progress-fill" id="detail-subject-progress-bar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Categories Accordion Container -->
+            <div id="categories-accordion-container">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 3: REAL INTERACTIVE CALENDAR
+             ================================================================== -->
+        <section class="view-section" id="view-calendar">
+          <div class="calendar-container">
+            
+            <!-- Calendar Navigation Topbar -->
+            <div class="calendar-topbar">
+              <div class="calendar-nav-group">
+                <button class="btn btn-outline btn-icon" id="cal-btn-prev" aria-label="Previous">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn btn-outline btn-icon" id="cal-btn-next" aria-label="Next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <button class="btn btn-outline btn-sm" id="cal-btn-today">Today</button>
+                <h2 class="calendar-current-month" id="cal-current-label">October 2026</h2>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                <!-- Jump Date Picker -->
+                <input type="date" id="cal-jump-date-picker" class="form-control" style="width: auto; padding: 6px 12px;" title="Jump to Date">
+
+                <!-- View Mode Toggle (Month / Week / Day) -->
+                <div class="calendar-view-toggle">
+                  <button class="calendar-toggle-btn active" data-mode="month">Month</button>
+                  <button class="calendar-toggle-btn" data-mode="week">Week</button>
+                  <button class="calendar-toggle-btn" data-mode="day">Day</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filters Bar for Calendar -->
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center; background: var(--bg-card); padding: 12px 18px; border-radius: var(--border-radius-md); border: 1px solid var(--border-card);">
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--navy-deep);">Filter Calendar:</span>
+              <select id="cal-filter-subject" class="form-control" style="width: auto; padding: 6px 10px; font-size: 0.82rem;">
+                <option value="all">All Subjects</option>
+              </select>
+              <select id="cal-filter-priority" class="form-control" style="width: auto; padding: 6px 10px; font-size: 0.82rem;">
+                <option value="all">All Priorities</option>
+                <option value="Urgent">Urgent</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+              <select id="cal-filter-status" class="form-control" style="width: auto; padding: 6px 10px; font-size: 0.82rem;">
+                <option value="all">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </div>
+
+            <!-- Calendar Display Area (Month Grid / Week View / Day Agenda) -->
+            <div id="cal-view-container">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- Selected Date Details Panel -->
+            <div class="calendar-date-panel">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--gold-dark); font-weight: 700;">Selected Date Agenda</span>
+                  <h3 id="cal-panel-selected-date" style="font-size: 1.15rem; font-weight: 700; color: var(--navy-deep);">October 29, 2026</h3>
+                </div>
+                <button class="btn btn-sm btn-gold" id="btn-cal-add-task-date">
+                  <i class="fas fa-plus"></i> Add Task for This Date
+                </button>
+              </div>
+
+              <div id="cal-panel-tasks-list">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 4: TODAY'S TASKS
+             ================================================================== -->
+        <section class="view-section" id="view-today">
+          
+          <!-- Date Navigation Header -->
+          <div class="today-nav-header">
+            <div class="today-date-display">
+              <span class="today-day-name" id="today-day-name">Thursday</span>
+              <span class="today-full-date" id="today-full-date">October 29, 2026</span>
+              <span class="badge badge-gold" id="today-badge-indicator">Today</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button class="btn btn-outline btn-icon" id="btn-prev-day" title="Previous Day">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="btn btn-outline btn-sm" id="btn-jump-today">Today</button>
+              <button class="btn btn-outline btn-icon" id="btn-next-day" title="Next Day">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <button class="btn btn-gold" id="btn-add-today-task">
+                <i class="fas fa-plus"></i> Add Task for Today
+              </button>
+            </div>
+          </div>
+
+          <!-- Today's Progress Card -->
+          <div class="today-progress-card">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--navy-deep);">Daily Study Target</h3>
+                <span style="font-size: 1.35rem; font-weight: 800; color: var(--gold-dark);" id="today-completion-pct">0%</span>
+              </div>
+              <div class="progress-track progress-lg">
+                <div class="progress-fill" id="today-progress-bar" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 20px; text-align: center; border-left: 1px solid var(--border-light); padding-left: 24px;">
+              <div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--navy-deep);" id="today-total-tasks-count">0</div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Total</div>
+              </div>
+              <div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--success);" id="today-completed-tasks-count">0</div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Done</div>
+              </div>
+              <div>
+                <div style="font-size: 1.4rem; font-weight: 800; color: var(--warning);" id="today-pending-tasks-count">0</div>
+                <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Pending</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter & Group Controls -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <select id="today-filter-priority" class="form-control" style="width: auto; font-size: 0.85rem;">
+                <option value="all">All Priorities</option>
+                <option value="Urgent">Urgent</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+
+              <select id="today-filter-status" class="form-control" style="width: auto; font-size: 0.85rem;">
+                <option value="all">All Statuses</option>
+                <option value="Pending">Pending Only</option>
+                <option value="Completed">Completed Only</option>
+              </select>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 0.82rem; color: var(--text-secondary); font-weight: 600;">Group by:</span>
+              <select id="today-group-by" class="form-control" style="width: auto; font-size: 0.85rem;">
+                <option value="priority">Priority</option>
+                <option value="time">Time of Day</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Tasks List Container -->
+          <div id="today-tasks-list-container">
+            <!-- Populated by JS -->
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 5: TOPIC PROGRESSION & ANALYTICS
+             ================================================================== -->
+        <section class="view-section" id="view-analytics">
+          
+          <!-- Analytics Filters Toolbar -->
+          <div class="analytics-toolbar">
+            <div>
+              <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--navy-deep);">Academic Analytics</h2>
+              <span style="font-size: 0.85rem; color: var(--text-secondary);">Genuine study performance and curriculum completion data</span>
+            </div>
+
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <select id="analytics-range-select" class="form-control" style="width: auto;">
+                <option value="7">Last 7 Days</option>
+                <option value="30" selected>Last 30 Days</option>
+                <option value="90">Last 90 Days</option>
+                <option value="365">Past Year</option>
+              </select>
+
+              <select id="analytics-subj-filter" class="form-control" style="width: auto;">
+                <option value="all">All Subjects</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Key Performance Indicators Grid -->
+          <div class="analytics-kpis-grid">
+            <div class="stat-card gold-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Lecture Completion</span>
+                <div class="stat-card-icon"><i class="fas fa-graduation-cap"></i></div>
+              </div>
+              <div class="stat-card-value" id="kpi-overall-lecture-pct">0%</div>
+              <div class="stat-card-sub"><span id="kpi-completed-lectures">0</span> of 89 lectures completed</div>
+            </div>
+
+            <div class="stat-card green-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Task Completion Rate</span>
+                <div class="stat-card-icon"><i class="fas fa-check-double"></i></div>
+              </div>
+              <div class="stat-card-value" id="kpi-overall-task-pct">0%</div>
+              <div class="stat-card-sub"><span id="kpi-completed-tasks">0</span> tasks finished</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Total Study Time</span>
+                <div class="stat-card-icon"><i class="fas fa-clock"></i></div>
+              </div>
+              <div class="stat-card-value" id="kpi-study-hours">0.0 hrs</div>
+              <div class="stat-card-sub">Recorded duration</div>
+            </div>
+
+            <div class="stat-card gold-theme">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Study Streak</span>
+                <div class="stat-card-icon"><i class="fas fa-fire"></i></div>
+              </div>
+              <div class="stat-card-value" id="kpi-current-streak">0 Days</div>
+              <div class="stat-card-sub">Best Streak: <strong id="kpi-best-streak">0 Days</strong></div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Highest Progress Subject</span>
+                <div class="stat-card-icon"><i class="fas fa-medal"></i></div>
+              </div>
+              <div class="stat-card-value" style="font-size: 1.15rem;" id="kpi-highest-subject">None</div>
+              <div class="stat-card-sub">Leading course</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Needs Most Focus</span>
+                <div class="stat-card-icon"><i class="fas fa-exclamation-circle"></i></div>
+              </div>
+              <div class="stat-card-value" style="font-size: 1.15rem; color: var(--danger);" id="kpi-lowest-subject">None</div>
+              <div class="stat-card-sub">Lowest percentage</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Pending Lectures</span>
+                <div class="stat-card-icon"><i class="fas fa-hourglass-start"></i></div>
+              </div>
+              <div class="stat-card-value" id="kpi-remaining-lectures">89</div>
+              <div class="stat-card-sub">Lectures remaining</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card-header">
+                <span class="stat-card-label">Avg Daily Tasks</span>
+                <div class="stat-card-icon"><i class="fas fa-chart-bar"></i></div>
+              </div>
+              <div class="stat-card-value" id="kpi-avg-daily-tasks">0.00</div>
+              <div class="stat-card-sub">Daily productivity rate</div>
+            </div>
+          </div>
+
+          <!-- Two-Column Chart Layout -->
+          <div class="charts-two-col">
+            
+            <!-- Chart 1: Daily Study Activity -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="card-title"><i class="fas fa-calendar-check card-title-icon"></i> Daily Study Activity</h3>
+                <span class="badge badge-gold">Tasks & Lectures</span>
+              </div>
+              <div class="chart-canvas-wrap" id="chart-daily-activity">
+                <!-- SVG Chart rendered by JS -->
+              </div>
+            </div>
+
+            <!-- Chart 2: Lecture Completion Trend -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="card-title"><i class="fas fa-chart-line card-title-icon"></i> Lecture Completion Trend</h3>
+                <span class="badge badge-navy">Cumulative</span>
+              </div>
+              <div class="chart-canvas-wrap" id="chart-lecture-trend">
+                <!-- SVG Chart rendered by JS -->
+              </div>
+            </div>
+
+            <!-- Chart 3: Subject Progress Comparison -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="card-title"><i class="fas fa-poll card-title-icon"></i> Subject Progress Comparison</h3>
+                <span class="badge badge-gold">5 Core Courses</span>
+              </div>
+              <div class="chart-canvas-wrap" id="chart-subject-comparison">
+                <!-- Progress Bars rendered by JS -->
+              </div>
+            </div>
+
+            <!-- Chart 4: Task Completion Donut -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="card-title"><i class="fas fa-pie-chart card-title-icon"></i> Task Completion Rate</h3>
+                <span class="badge badge-navy">Overall</span>
+              </div>
+              <div class="chart-canvas-wrap" id="chart-task-completion-rate">
+                <!-- Donut rendered by JS -->
+              </div>
+            </div>
+
+            <!-- Chart 5: Study Time Distribution -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="card-title"><i class="fas fa-history card-title-icon"></i> Study Time by Subject</h3>
+                <span class="badge badge-gold">Estimated Duration</span>
+              </div>
+              <div class="chart-canvas-wrap" id="chart-study-time-dist">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+
+            <!-- Chart 6: Weekly Productivity -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="card-title"><i class="fas fa-calendar-week card-title-icon"></i> Weekly Productivity</h3>
+                <span class="badge badge-navy">Day of Week</span>
+              </div>
+              <div class="chart-canvas-wrap" id="chart-weekly-productivity">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Full Width: Subject Difficulty Distribution -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3 class="card-title"><i class="fas fa-sliders-h card-title-icon"></i> Subject Difficulty Distribution</h3>
+              <span class="badge badge-gold">Self-reported ratings</span>
+            </div>
+            <div class="chart-canvas-wrap" id="chart-difficulty-breakdown">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- ==================================================================
+             VIEW 6: SETTINGS
+             ================================================================== -->
+        <section class="view-section" id="view-settings">
+
+          <!-- Academic Examination Preferences -->
+          <div class="settings-section-card">
+            <h3 class="settings-section-title"><i class="fas fa-clock" style="color: var(--gold-rich);"></i> Examination Target Date</h3>
+            <p class="settings-section-desc">Manage your final medical examination target date and time. Used across the entire countdown engine.</p>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">MBBCh Final Examination</span>
+                <span class="settings-row-desc">Default date is February 19, 2027 at 09:00 AM</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: center;">
+                <input type="datetime-local" id="settings-exam-date" class="form-control" style="width: auto;">
+                <button class="btn btn-outline" id="btn-settings-reset-exam">Reset to Default</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Preferences -->
+          <div class="settings-section-card">
+            <h3 class="settings-section-title"><i class="fas fa-cog" style="color: var(--navy-deep);"></i> Study & Calendar Preferences</h3>
+            <p class="settings-section-desc">Customize interface theme, first day of the academic week, and calendar defaults.</p>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Application Theme</span>
+                <span class="settings-row-desc">Refined navy & gold aesthetic</span>
+              </div>
+              <select id="settings-theme-select" class="form-control" style="width: auto;">
+                <option value="navy-gold-classic">Navy & Rich Gold (Classic)</option>
+                <option value="navy-gold-dark">Navy & Gold (Darker Night Mode)</option>
+              </select>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Default Calendar View</span>
+                <span class="settings-row-desc">View displayed when navigating to the calendar</span>
+              </div>
+              <select id="settings-cal-view" class="form-control" style="width: auto;">
+                <option value="month">Month View</option>
+                <option value="week">Week View</option>
+                <option value="day">Day Agenda View</option>
+              </select>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">First Day of Week</span>
+                <span class="settings-row-desc">Start calendar weeks on Saturday (standard in Egyptian universities) or Sunday</span>
+              </div>
+              <select id="settings-first-day" class="form-control" style="width: auto;">
+                <option value="6">Saturday (Academic Standard)</option>
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+              </select>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Auto-complete Associated Lecture</span>
+                <span class="settings-row-desc">Automatically mark a lecture completed when its linked study task is finished</span>
+              </div>
+              <label class="custom-checkbox">
+                <input type="checkbox" id="settings-auto-complete-lec">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Default Task Priority</span>
+                <span class="settings-row-desc">Preset priority assigned to newly created tasks</span>
+              </div>
+              <select id="settings-default-priority" class="form-control" style="width: auto;">
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Urgent">Urgent</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Browser Notifications</span>
+                <span class="settings-row-desc">Receive browser task reminders when the application tab is active</span>
+              </div>
+              <label class="custom-checkbox">
+                <input type="checkbox" id="settings-notifications-toggle">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+
+            <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+              <button class="btn btn-gold" id="btn-save-settings">
+                <i class="fas fa-save"></i> Save Preferences
+              </button>
+            </div>
+          </div>
+
+          <!-- Backup & Data Management -->
+          <div class="settings-section-card">
+            <h3 class="settings-section-title"><i class="fas fa-database" style="color: var(--gold-dark);"></i> Backup & Restore Data</h3>
+            <p class="settings-section-desc">Export and import your study progress. All data is saved directly in your personal browser storage.</p>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Complete JSON Backup</span>
+                <span class="settings-row-desc">Download all subjects, lectures, tasks, ratings, and settings to a JSON file</span>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button class="btn btn-primary" id="btn-export-json">
+                  <i class="fas fa-download"></i> Export JSON
+                </button>
+                <button class="btn btn-outline" id="btn-trigger-import-json">
+                  <i class="fas fa-upload"></i> Restore JSON
+                </button>
+                <input type="file" id="input-import-json-file" accept=".json" style="display: none;">
+              </div>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Curriculum CSV Export</span>
+                <span class="settings-row-desc">Export subject lists, categories, and lecture completion records to a spreadsheet</span>
+              </div>
+              <button class="btn btn-outline" id="btn-export-subjects-csv">
+                <i class="fas fa-file-csv"></i> Export Curriculum CSV
+              </button>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Tasks CSV Export</span>
+                <span class="settings-row-desc">Export study tasks, dates, priorities, and descriptions to CSV</span>
+              </div>
+              <button class="btn btn-outline" id="btn-export-tasks-csv">
+                <i class="fas fa-file-csv"></i> Export Tasks CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="settings-section-card" style="border-color: #F8D7DA; background: #FFFDFD;">
+            <h3 class="settings-section-title" style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+            <p class="settings-section-desc">Irreversible reset operations. Please proceed with caution.</p>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label">Restore Default Medical Curriculum</span>
+                <span class="settings-row-desc">Reload the official 5 Fourth-Year medical subjects and original lecture rosters</span>
+              </div>
+              <button class="btn btn-outline" id="btn-restore-default-subjects">
+                Restore Curriculum
+              </button>
+            </div>
+
+            <div class="settings-row">
+              <div class="settings-row-info">
+                <span class="settings-row-label" style="color: var(--danger);">Reset All Application Data</span>
+                <span class="settings-row-desc">Wipe all local storage records, tasks, custom subjects, and reset to defaults</span>
+              </div>
+              <button class="btn btn-danger" id="btn-reset-all-data">
+                <i class="fas fa-trash-alt"></i> Reset All Data
+              </button>
+            </div>
+          </div>
+
+        </section>
+
+      </main>
+    </div>
+
+  </div>
+
+
+  <!-- ======================================================================
+       MODALS CONTAINER
+       ====================================================================== -->
+
+  <!-- Modal 1: Edit Exam Date -->
+  <div class="modal-backdrop" id="modal-edit-exam-date">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-calendar-alt card-title-icon"></i> Edit Examination Date & Time</h3>
+        <button class="btn btn-sm btn-ghost btn-icon" onclick="window.UI.closeModal('modal-edit-exam-date')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="input-exam-datetime">Examination Date & Time <span class="required">*</span></label>
+          <input type="datetime-local" id="input-exam-datetime" class="form-control">
+          <span class="form-help">Default target: February 19, 2027 at 09:00 AM. Changing this updates the countdown immediately.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btn-reset-exam-date">Reset to Feb 19, 2027</button>
+        <button class="btn btn-gold" id="btn-save-exam-date">Save & Update Countdown</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Add / Edit Subject -->
+  <div class="modal-backdrop" id="modal-subject">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="subject-modal-title"><i class="fas fa-book card-title-icon"></i> Add New Subject</h3>
+        <button class="btn btn-sm btn-ghost btn-icon" onclick="window.UI.closeModal('modal-subject')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="input-subject-id">
+        <div class="form-group">
+          <label class="form-label" for="input-subject-name">Subject Name <span class="required">*</span></label>
+          <input type="text" id="input-subject-name" class="form-control" placeholder="e.g. Ophthalmology, Forensic Medicine, General Surgery">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="input-subject-code">Course Code</label>
+            <input type="text" id="input-subject-code" class="form-control" placeholder="e.g. PED-401">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="select-subject-priority">Priority</label>
+            <select id="select-subject-priority" class="form-control">
+              <option value="Urgent">Urgent</option>
+              <option value="High">High</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="select-subject-rating">Personal Priority Rating</label>
+          <select id="select-subject-rating" class="form-control">
+            <option value="5">⭐⭐⭐⭐⭐ (5 Stars - Top Priority)</option>
+            <option value="4" selected>⭐⭐⭐⭐ (4 Stars)</option>
+            <option value="3">⭐⭐⭐ (3 Stars)</option>
+            <option value="2">⭐⭐ (2 Stars)</option>
+            <option value="1">⭐ (1 Star)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="window.UI.closeModal('modal-subject')">Cancel</button>
+        <button class="btn btn-gold" id="btn-save-subject-modal">Save Subject</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Add Category -->
+  <div class="modal-backdrop" id="modal-category">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fas fa-folder-plus card-title-icon"></i> Add Lecture Category</h3>
+        <button class="btn btn-sm btn-ghost btn-icon" onclick="window.UI.closeModal('modal-category')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="input-category-subj-id">
+        <div class="form-group">
+          <label class="form-label" for="input-category-name">Category Title <span class="required">*</span></label>
+          <input type="text" id="input-category-name" class="form-control" placeholder="e.g. Neonatology, Cardiology, Pharmacotherapy">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="window.UI.closeModal('modal-category')">Cancel</button>
+        <button class="btn btn-gold" id="btn-save-category-modal">Save Category</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Add / Edit Lecture -->
+  <div class="modal-backdrop" id="modal-lecture">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="lecture-modal-title"><i class="fas fa-graduation-cap card-title-icon"></i> Add Lecture</h3>
+        <button class="btn btn-sm btn-ghost btn-icon" onclick="window.UI.closeModal('modal-lecture')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="input-lecture-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="select-lecture-subject">Subject <span class="required">*</span></label>
+            <select id="select-lecture-subject" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="select-lecture-category">Category <span class="required">*</span></label>
+            <select id="select-lecture-category" class="form-control"></select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-lecture-title">Lecture Title <span class="required">*</span></label>
+          <input type="text" id="input-lecture-title" class="form-control" placeholder="e.g. Congenital Cyanotic Heart Disease">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="select-lecture-difficulty">Difficulty</label>
+            <select id="select-lecture-difficulty" class="form-control">
+              <option value="Easy">Easy</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="select-lecture-status">Review Status</label>
+            <select id="select-lecture-status" class="form-control">
+              <option value="Not Started" selected>Not Started</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+              <option value="Needs Revision">Needs Revision</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="select-lecture-rating">Personal Rating</label>
+          <select id="select-lecture-rating" class="form-control">
+            <option value="0">No Rating</option>
+            <option value="1">⭐ 1 Star</option>
+            <option value="2">⭐⭐ 2 Stars</option>
+            <option value="3">⭐⭐⭐ 3 Stars</option>
+            <option value="4">⭐⭐⭐⭐ 4 Stars</option>
+            <option value="5">⭐⭐⭐⭐⭐ 5 Stars</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-lecture-notes">Personal Notes</label>
+          <textarea id="input-lecture-notes" class="form-control" placeholder="Key pearls, mnemonics, high-yield exam questions..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="window.UI.closeModal('modal-lecture')">Cancel</button>
+        <button class="btn btn-gold" id="btn-save-lecture-modal">Save Lecture</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: Add / Edit Study Task -->
+  <div class="modal-backdrop" id="modal-task">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="task-modal-title"><i class="fas fa-tasks card-title-icon"></i> Schedule Study Task</h3>
+        <button class="btn btn-sm btn-ghost btn-icon" onclick="window.UI.closeModal('modal-task')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="input-task-id">
+        <div class="form-group">
+          <label class="form-label" for="input-task-title">Task Title <span class="required">*</span></label>
+          <input type="text" id="input-task-title" class="form-control" placeholder="e.g. Solve 50 MCQs on Pediatric Cardiology">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-task-desc">Description</label>
+          <input type="text" id="input-task-desc" class="form-control" placeholder="Optional notes or clinical objectives">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="input-task-date">Scheduled Date <span class="required">*</span></label>
+            <input type="date" id="input-task-date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-start-time">Start Time</label>
+            <input type="time" id="input-task-start-time" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-end-time">End Time</label>
+            <input type="time" id="input-task-end-time" class="form-control">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="select-task-subject">Associated Subject</label>
+            <select id="select-task-subject" class="form-control"></select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="select-task-lecture">Associated Lecture</label>
+            <select id="select-task-lecture" class="form-control">
+              <option value="">-- No Associated Lecture --</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="select-task-priority">Priority</label>
+            <select id="select-task-priority" class="form-control">
+              <option value="Urgent">Urgent</option>
+              <option value="High">High</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Low">Low</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="select-task-status">Status</label>
+            <select id="select-task-status" class="form-control">
+              <option value="Pending" selected>Pending</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="input-task-duration">Est. Duration (Mins)</label>
+            <input type="number" id="input-task-duration" class="form-control" min="15" step="15" value="60">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="input-task-notes">Notes</label>
+          <textarea id="input-task-notes" class="form-control" placeholder="Revision questions, flashcards, or specific textbook pages..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="window.UI.closeModal('modal-task')">Cancel</button>
+        <button class="btn btn-gold" id="btn-save-task-modal">Save Task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 6: Reusable Confirmation Dialog -->
+  <div class="modal-backdrop" id="modal-confirm-dialog">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="confirm-dialog-title" style="color: var(--danger);"><i class="fas fa-exclamation-triangle"></i> Confirmation Required</h3>
+        <button class="btn btn-sm btn-ghost btn-icon" onclick="window.UI.closeModal('modal-confirm-dialog')"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-dialog-message" style="font-size: 0.95rem; color: var(--text-primary); line-height: 1.5;"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="window.UI.closeModal('modal-confirm-dialog')">Cancel</button>
+        <button class="btn btn-danger" id="confirm-dialog-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Core Scripts in Exact Order -->
+  <script src="js/data-default.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/subjects.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
